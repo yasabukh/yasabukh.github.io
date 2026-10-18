@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yasmina Abukhadra</title>
+<meta name="description" content="Yasmina Abukhadra — software engineer at Wing with an M.S. in Computer Science from Stanford. Research in embodied AI, machine learning, and computational neuroscience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --text: #1f2328;
+    --muted: #5b636e;
+    --accent: #8c1515;          /* Stanford cardinal — change to taste */
+    --rule: #e4e1da;
+    --card: #ffffff;
+    --tag-bg: #f3efe8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15171a; --text: #e6e6e6; --muted: #9aa3ad;
+      --accent: #e0767a; --rule: #2a2e33; --card: #1c1f23; --tag-bg: #262a2f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 "Instrument Sans", system-ui, sans-serif;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg); border-bottom: 1px solid var(--rule);
+  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  nav .name { font-family: "Newsreader", serif; font-weight: 600; font-size: 18px; color: var(--text); }
+  nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; font-size: 14px; }
+  nav ul a { color: var(--muted); }
+  @media (max-width: 640px) { nav ul { display: none; } }
+
+  header.hero { display: grid; grid-template-columns: 170px 1fr; gap: 36px; padding: 56px 0 40px; align-items: start; }
+  @media (max-width: 640px) { header.hero { grid-template-columns: 1fr; gap: 20px; padding-top: 36px; } }
+  .photo {
+    width: 170px; height: 170px; border-radius: 50%; object-fit: cover;
+    background: var(--tag-bg); border: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Newsreader", serif; font-size: 52px; color: var(--muted);
+  }
+  h1 { font-family: "Newsreader", serif; font-weight: 600; font-size: 38px; line-height: 1.15; margin: 0 0 6px; }
+  .role { color: var(--muted); margin: 0 0 16px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .links a {
+    font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--rule); background: var(--card); color: var(--text);
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+  section { padding: 28px 0; border-top: 1px solid var(--rule); }
+  h2 { font-family: "Newsreader", serif; font-weight: 600; font-size: 24px; margin: 0 0 18px; }
+  .interests { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .interests span { font-size: 13px; background: var(--tag-bg); padding: 4px 10px; border-radius: 6px; }
+
+  .pub { margin-bottom: 22px; }
+  .pub .title { font-weight: 600; }
+  .pub .authors { color: var(--muted); font-size: 15px; }
+  .pub .authors b { color: var(--text); font-weight: 600; }
+  .pub .venue { font-style: italic; font-size: 15px; }
+  .pub .plinks { font-size: 14px; margin-top: 2px; }
+  .pub .plinks a { margin-right: 12px; }
+
+  .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .projects { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; }
+  .card h3 { font-size: 17px; margin: 0 0 4px; line-height: 1.35; }
+  .card .meta { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+  .card p { font-size: 15px; margin: 0 0 12px; flex: 1; }
+  .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .card .tags span { font-size: 12px; background: var(--tag-bg); padding: 2px 8px; border-radius: 5px; }
+  .card .plinks { font-size: 14px; }
+  .card .plinks a { margin-right: 12px; }
+
+  .timeline { list-style: none; padding: 0; margin: 0; }
+  .timeline li { display: grid; grid-template-columns: 1fr auto; gap: 0 16px; margin-bottom: 16px; }
+  .timeline .what { font-weight: 600; }
+  .timeline .when { color: var(--muted); font-size: 14px; }
+  .timeline .where { color: var(--muted); font-size: 15px; grid-column: 1 / -1; }
+
+  .featured { background: var(--card); border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 10px; padding: 20px 22px; }
+  .featured .label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .featured .summary { font-size: 15px; margin: 10px 0 8px; }
+  .subhead { font-size: 15px; font-weight: 600; color: var(--muted); margin: 0 0 6px; }
+  .note { color: var(--muted); font-size: 15px; margin: 0 0 16px; }
+  .compact { list-style: none; padding: 0; margin: 0; font-size: 14.5px; }
+  .compact li { margin-bottom: 10px; }
+  .compact .t { font-weight: 500; }
+  .compact .v { color: var(--muted); }
+  .compact b { font-weight: 600; }
+
+  .timeline .desc { grid-column: 1 / -1; font-size: 14.5px; margin-top: 2px; }
+  .timeline.small li { margin-bottom: 10px; font-size: 15px; }
+
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--rule); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="name" href="#">Yasmina Abukhadra</a>
+    <ul>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <header class="hero" id="about">
+    <img class="photo" src="profile-photo-circle.png" alt="Yasmina Abukhadra">
+    <div>
+      <h1>Yasmina Abukhadra</h1>
+      <p class="role">Software Engineer at Wing &middot; M.S. Computer Science (AI), Stanford </p>
+      <p>
+        I'm a software engineer at Wing, Alphabet's autonomous drone delivery company. I recently completed an
+        M.S. in computer science (AI) at Stanford, and I hold a B.S. in computer science and mathematics from Yale.
+      </p>
+      <p>
+        My recent research has focused on improving the efficiency of learning-based systems for the physical world. In Stanford's Autonomous Systems Lab, I worked on deciding when and where vision-language
+        planners for robots should spend test-time compute. Before that, I did research in computational
+        neuroscience, quantum computing, and biomedicine.
+      </p>
+      <div class="interests">
+        <span>Embodied AI &amp; robotics</span>
+        <span>AI safety &amp; reliability</span>
+        <span>Vision-language models</span>
+        <span>Efficient inference &amp; test-time compute</span>
+        <span>Reinforcement learning</span>
+        <span>Validation &amp; failure analysis</span>
+      </div>
+      <div class="links">
+        <a href="https://scholar.google.com/citations?user=6R75JoUAAAAJ&amp;hl=en">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/yasmina-abukhadra-8168a622a/">LinkedIn</a>
+        <a href="https://github.com/yasabukh">GitHub</a>
+        <a href="https://medium.com/@yasabukh_32574">Medium</a>
+        <!-- <a href="cv.pdf">CV</a>  ← uncomment after adding cv.pdf to this folder -->
+      </div>
+    </div>
+  </header>
+
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <p class="subhead">Robotics &amp; AI</p>
+    <div class="featured">
+      <div class="label">Accepted to CoRL 2026</div>
+      <div class="pub" style="margin:0">
+        <div class="title">DIRECT: When and Where Should You Allocate Test-Time Compute in Embodied Planners?</div>
+        <div class="authors">Jadelynn Dao*, Milan Ganai*, <b>Yasmina Abukhadra</b>, Ajay Sridhar, Mozhgan Nasr Azadani, Katie Luo, Clark Barrett, Jiajun Wu, Chelsea Finn, Marco Pavone</div>
+        <div class="venue">Accepted to the Conference on Robot Learning (CoRL) 2026 &middot; arXiv preprint arXiv:2606.12402</div>
+        <p class="summary">Scaling test-time compute (chain-of-thought depth, model size, memory) in embodied planners increases latency, tokens, and FLOPs, with uneven gains in task success. DIRECT is a lightweight router that uses the scene and task to decide how much compute each step gets.</p>
+        <div class="plinks"><a href="https://arxiv.org/abs/2606.12402">arXiv</a><a href="https://arxiv.org/pdf/2606.12402">PDF</a></div>
+        <div class="note" style="font-size:13px;margin:8px 0 0">* Equal contribution</div>
+      </div>
+    </div>
+
+    <p class="subhead" style="margin-top:30px">Computational Neuroscience &amp; EEG</p>
+
+    <div class="pub">
+      <div class="title">Digital Response Test in Epilepsy Assesses Interictal Epileptiform Discharge Effects in Real Time</div>
+      <div class="authors">Andreas von Allmen, Diyuan Lu, Caroline Jagella, <b>Yasmina Abukhadra</b>, Rune Markhus, Jochen Triesch, Margaret Gopaul, Lawrence Hirsch, Felix Rosenow, Hal Blumenfeld, Heinz Krestel</div>
+      <div class="venue">Epilepsia 67(1): 381–395, 2026</div>
+      <div class="plinks"><a href="https://doi.org/10.1111/epi.18629">Paper</a><a href="https://pubmed.ncbi.nlm.nih.gov/41042536/">PubMed</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="title">Predictive Power of Interictal Epileptiform Discharges in Fitness-to-Drive Evaluation</div>
+      <div class="authors">Heinz Krestel, David R. Schreier, Elmaze Sakiri, Andreas von Allmen, <b>Yasmina Abukhadra</b>, Arto Nirkko, Maja Steinlin, Felix Rosenow, Rune Markhus, Gaby Schneider, Caroline Jagella, Johannes Mathis, Hal Blumenfeld</div>
+      <div class="venue">Neurology 101(9): e866–e878, 2023</div>
+      <div class="plinks"><a href="https://doi.org/10.1212/WNL.0000000000207531">Paper</a><a href="https://pubmed.ncbi.nlm.nih.gov/37414567/">PubMed</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="title">A Machine-Learning Approach for Predicting Impaired Consciousness in Absence Epilepsy</div>
+      <div class="authors">Max Springer, Aya Khalaf, Peter Vincent, Jun Hwan Ryu, <b>Yasmina Abukhadra</b>, Sándor Beniczky, Tracy Glauser, Heinz Krestel, Hal Blumenfeld</div>
+      <div class="venue">Annals of Clinical and Translational Neurology 9(10): 1538–1550, 2022</div>
+      <div class="plinks"><a href="https://doi.org/10.1002/acn3.51647">Paper</a><a href="https://pubmed.ncbi.nlm.nih.gov/36114696/">PubMed</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="title">EEG and Machine Learning in Prediction of Impaired Responses to Visual Stimuli During Interictal Epileptiform Discharges</div>
+      <div class="authors"><b>Yasmina Abukhadra</b>, Jingjing Li, Max Springer, Aya Khalaf, Sandra Roethlisberger, Heinz Krestel, Hal Blumenfeld</div>
+      <div class="venue">American Epilepsy Society Annual Meeting, 2021 (conference abstract, first author)</div>
+      <div class="plinks"><a href="https://cms.aesnet.org/abstractslisting/eeg-and-machine-learning-in-prediction-of-impaired-responses-to-visual-stimuli-during-interictal-epileptiform-discharges">Abstract</a></div>
+    </div>
+
+    <p class="subhead" style="margin-top:30px">Biological &amp; Biomedical Research</p>
+
+    <div class="pub">
+      <div class="title">Generation of LexA Enhancer-Trap Lines in <i>Drosophila</i> by an International Scholastic Network</div>
+      <div class="authors">Ella S. Kim, Arjun Rajan, Kathleen Chang, Sanath Govindarajan, Clara Gulick, Eva English, Bianca Rodriguez, &hellip;, <b>Yasmina Abukhadra</b>, Isabella Bacon, et al.</div>
+      <div class="venue">G3: Genes|Genomes|Genetics 13(9): jkad124, 2023</div>
+      <div class="plinks"><a href="https://doi.org/10.1093/g3journal/jkad124">Paper</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="title">The Role of Extracellular Vesicles and PD-L1 in Glioblastoma-Mediated Immunosuppressive Monocyte Induction</div>
+      <div class="authors">Benjamin T. Himes, Timothy E. Peterson, Tristan de Mooij, Luz M. Cumba Garcia, Mi-Yeon Jung, Sarah Uhm, David Yan, Jasmine Tyson, Helen J. Jin-Lee, Daniel Parney, <b>Yasmina Abukhadra</b>, Michael P. Gustafson, Allan B. Dietz, Aaron J. Johnson, Haidong Dong, Rachel L. Maus, Svetomir Markovic, Fabrice Lucien, Ian F. Parney</div>
+      <div class="venue">Neuro-Oncology 22(7): 967–978, 2020</div>
+      <div class="plinks"><a href="https://doi.org/10.1093/neuonc/noaa029">Paper</a></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Selected Projects</h2>
+    <div class="projects">
+
+      <div class="card">
+        <h3>Failure Probability Estimation for Robotic Grasping</h3>
+        <div class="meta">Stanford CS238V &middot; with Jacob Frausto &amp; Ian Lasic-Ellis &middot; 2025</div>
+        <p>Compared direct estimation, importance sampling, and adaptive importance sampling for estimating how often a simulated parallel-jaw gripper fails to hold an object under randomized poses and sensor noise. Found the methods disagreed (about 1.4% vs. 4.6–4.9% failure at 1,000 trials), analyzed potential sources of the discrepancy, and suggested directions for future work.</p>
+        <div class="tags"><span>Robotics</span><span>Safety validation</span><span>Importance sampling</span><span>PyBullet</span></div>
+        <div class="plinks">
+          <a href="papers/cs238v-grasp-failure-estimation.pdf">Report (PDF)</a>
+          <a href="https://github.com/jfrausto7/FPERG">Code</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Keeping the Lights On for Campus: Deep Q-Learning for Microgrid Optimization</h3>
+        <div class="meta">Stanford CS238 &middot; with Aakash Mishra &middot; 2024</div>
+        <p>Modeled a university campus microgrid as a Markov decision process and learned control policies that balance solar generation, battery storage, and grid purchases, using UC San Diego microgrid data as a proxy for Stanford. A deep Q-learning policy achieved lower costs than greedy and random baselines.</p>
+        <div class="tags"><span>Reinforcement learning</span><span>MDPs</span><span>Deep Q-learning</span><span>Sequential decisions</span></div>
+        <div class="plinks">
+          <a href="papers/cs238-microgrid-optimization.pdf">Report (PDF)</a>
+          <a href="https://github.com/aakamishra/mdp-energy-grid-optimization">Code</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>BERT SCOPE: Extending minBERT with SimCSE, Ensembling &amp; PANDA</h3>
+        <div class="meta">Stanford CS224N &middot; with Samantha Liu &amp; Hannah Norman &middot; 2024</div>
+        <p>Multi-task language model for sentiment analysis, paraphrase detection, and semantic similarity. Led the contrastive-learning implementation and the PANDA extension, which fine-tunes on demographically perturbed sentence pairs to reduce bias. </p>
+        <div class="tags"><span>Language models</span><span>Contrastive learning</span><span>Bias mitigation</span><span>PyTorch</span></div>
+        <div class="plinks">
+          <a href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1254/final-reports/256821519.pdf">Report (PDF)</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Unraveling the Past: GNNs for Ancient Scroll Reconstruction</h3>
+        <div class="meta">Stanford CS224W &middot; with Frank D'Agostino &amp; Aakash Mishra &middot; 2025</div>
+        <p>Applied graph neural networks to the patch-stitching step of virtually unwrapping carbonized Herculaneum scrolls. Built upon a CT-scan-to-graph pipeline and compared GCN, GraphSAGE, GIN, GAT, and a custom DGCNN for layer classification, winding-angle regression, and noise detection. The DGCNN ran ~10× faster than the existing physics-based solver.</p>
+        <div class="tags"><span>PyTorch Geometric</span><span>GNNs</span><span>3D point clouds</span><span>AWS</span></div>
+        <div class="plinks">
+          <a href="https://medium.com/stanford-cs224w/unraveling-the-past-applying-gnn-techniques-to-ancient-scroll-reconstruction-7bf11fd8a258">Blog post</a>
+          <a href="https://colab.research.google.com/drive/1gtvPtIeVhciZiyPaHtLf_7lz-b_lAQcf?usp=sharing">Colab</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <p class="subhead">Research</p>
+    <ul class="timeline">
+      <li><span class="what">Student Researcher, Autonomous Systems Laboratory</span><span class="when">Mar 2026 – Present</span><span class="where">Stanford University &middot; Robotics and embodied AI</span></li>
+      <li><span class="what">Senior Research Project, Ding Lab</span><span class="when">Fall 2022</span><span class="where">Yale University &middot; Mitigation of rotational noise in quantum computing </span></li>
+      <li><span class="what">Student Researcher, Bhattacharjee Lab</span><span class="when">Sep 2021 – May 2022</span><span class="where">Yale University &middot; Quantum algorithms for cognitive neuroscience</span></li>
+      <li><span class="what">Student Researcher, Blumenfeld Lab (Hahn Fellow)</span><span class="when">Feb 2020 – Sep 2021</span><span class="where">Yale School of Medicine &middot; Machine learning and EEG</span></li>
+      <li><span class="what">Student Researcher, Shah Lab</span><span class="when">Summer 2019</span><span class="where">Brigham and Women's Hospital &middot; Brain cancer immunotherapy</span></li>
+      <li><span class="what">Student Researcher, Parney Lab</span><span class="when">Summer 2018</span><span class="where">Mayo Clinic &middot; Brain cancer immunology</span></li>
+    </ul>
+
+    <p class="subhead" style="margin-top:24px">Industry &amp; Teaching</p>
+    <ul class="timeline">
+      <li><span class="what">Software Engineer</span><span class="when">Jul 2023 – Present</span><span class="where">Wing (Alphabet)</span></li>
+      <li><span class="what">Software Engineering Intern</span><span class="when">Summer 2022</span><span class="where">Wing (Alphabet)</span></li>
+      <li><span class="what">Undergraduate Learning Assistant</span><span class="when">Fall 2022</span><span class="where">Yale University &middot; CPSC 323: Systems Programming and Computer Organization</span></li>
+    </ul>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="timeline">
+      <li><span class="what">M.S. Computer Science, Artificial Intelligence Specialization</span><span class="when">2023 – 2026</span><span class="where">Stanford University</span></li>
+      <li><span class="what">B.S. Computer Science and Mathematics</span><span class="when">2019 – 2023</span><span class="where">Yale University &middot; Phi Beta Kappa, Magna Cum Laude</span></li>
+    </ul>
+  </section>
+
+
+</main>
+
+<footer>
+  <div class="wrap">&copy; <span id="yr">2026</span> Yasmina Abukhadra</div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
